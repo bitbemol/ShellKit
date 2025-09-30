@@ -8,6 +8,17 @@ A tiny Swift utility for running shell commands safely and conveniently. ShellKi
 - Minimal surface area: A single `Shell.run` API you can drop into scripts, CLIs, and apps.
 - Predictable output: Trims trailing newlines and whitespace for straightforward comparisons.
 
+## How to use
+
+```swift
+do {
+    let output = try Shell.run("ls", "-la")
+    print("Command succeeded:\n\(output)")
+} catch {
+    print("Command failed: \(error)")
+}
+```
+
 ## Installation
 
 ### Add via Xcode
