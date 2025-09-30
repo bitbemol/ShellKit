@@ -13,3 +13,29 @@ A tiny Swift utility for running shell commands safely and conveniently. ShellKi
 ### Add via Xcode
 1. File → Add Packages…
 2. Enter the repository URL: `https://github.com/bitbemol/ShellKit.git`
+
+### Add via SPM
+
+```swift
+import PackageDescription
+
+let package = Package(
+    name: "AppExample",
+    dependencies: [
+        .package(url: "https://github.com/bitbemol/ShellKit.git", branch: "main") // Add this
+    ],
+    targets: [
+        .executableTarget(
+            name: "AppExample",
+            dependencies: [
+                .product(name: "ShellKit", package: "ShellKit") // Add this
+            ]
+        ),
+        .testTarget(
+            name: "AppExampleTests",
+            dependencies: ["AppExample"],
+            path: "Tests"
+        )
+    ]
+)
+```
